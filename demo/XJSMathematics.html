@@ -1,0 +1,35 @@
+<script src="../../XJSLib.js"></script>
+<script src="../src/XJSMathematics.js"></script>
+<script src="../src/types/XJSMathematicalObject.js"></script>
+<script src="../src/types/XJSRationalNumber.js"></script>
+<script src="../src/types/XJSInteger.js"></script>
+<script src="../src/types/XJSMatrix.js"></script>
+<script>
+var i1 = new XJSInteger( 1 );
+var i2 = new XJSInteger( 2 );
+var i3 = new XJSInteger( 3 );
+
+var f12 = new XJSRationalNumber( i1, i2 );
+var f23 = new XJSRationalNumber( i2, i3 );
+var f31 = new XJSRationalNumber( i3, i1 );
+
+var m = new XJSMatrix( [
+    [ 1, 2, 3, 4 ],
+    [ 5, 6, 7, 8 ],
+    [ 9, 10, 11, 12 ]
+] ).map( function ( element ) {
+    return new XJSInteger( element );
+} );
+
+console.log( i2.toString( ), '+', i3.toString( ), '=', i2[ '+' ]( i3 ).toString( ) );
+console.log( i2.toString( ), 'x', i3.toString( ), '=', i2[ 'x' ]( i3 ).toString( ) );
+
+console.log( '' );
+console.log( f12.toString( ), '+', f23.toString( ), '=', f12[ '+' ]( f23 ).toString( ) );
+console.log( f12.toString( ), 'x', f23.toString( ), '=', f12[ 'x' ]( f23 ).toString( ) );
+
+console.log( '' );
+console.log( i3.toString( ), '\r\nx', '\r\n' + m.toString( ), '\r\n=', '\r\n' + i3.x( m ).toString( ) );
+console.log( '' );
+console.log( f23.toString( ), '\r\nx', '\r\n' + m.toString( ), '\r\n=', '\r\n' + f23.x( m ).toString( ) );
+</script>
